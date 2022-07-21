@@ -7,7 +7,9 @@ const App = require(`${__dirname}/../app.js`);
 const debug = require('debug')('base:server');
 const http = require('http');
 const { port_internal } = Config.app();
-
+/**
+ * Redis configuration
+ */
 // const redis = require("redis");
 // config.redis.client = redis.createClient(config.db.redis);
 // config.redis.client.keys("viewer_*", function (err, keys) {
@@ -20,12 +22,17 @@ const { port_internal } = Config.app();
  * Get port from environment and store in Express.
  */
 const port = normalizePort(port_internal);
-console.log('Running on port:',port)
+console.log(`Server is running on port: ${port}`)
 /**
  * Create HTTP server.
  */
+const app = new App();
+app.Server = port;
 
-const server = http.createServer(new App());
+const server = http.createServer(app);
+/**
+ * Socket a needed
+ */
 
 // const io = require('socket.io')(server,{
 //     cors: {
@@ -50,9 +57,9 @@ const server = http.createServer(new App());
  * Listen on provided port, on all network interfaces.
  */
 
-// server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+server.listen(port);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -77,7 +84,6 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
     if (error.syscall !== 'listen') {
         throw error;
@@ -105,7 +111,6 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
     let addr = server.address();
     let bind = typeof addr === 'string'

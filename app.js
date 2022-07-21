@@ -55,17 +55,21 @@ class ExpressLoader {
             res.json({})
         });
 
-        const port = this.config.port_internal;
+        // const port = this.config.port_internal;
 
         // Start application
-        this.server = this.#app.listen(port, () => {
-            console.info( `Express running, now listening on port ${port}` );
-        });
+        // this.server = this.#app.listen(port, () => {
+        //     console.info( `Express running, now listening on port ${port}` );
+        // });
 
     }
 
-    get Server () {
-        return this.server;
+    // get Server () {
+    //     return this.server;
+    // }
+
+    set Server(port){
+        return this.#app.set('port', port);
     }
 
     /**

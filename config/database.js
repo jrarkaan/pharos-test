@@ -23,9 +23,13 @@ class MySQLConnection {
     }
     // // for regex query
     escape(str){
-        if(typeof str!== 'undefined' && str!==null)
-            return this.#vpool.escape((''+str).replace(/[\u0800-\uFFFF]/g, ''));
-        else return this.#vpool.escape(str);
+        try{
+            if(typeof str!== 'undefined' && str!==null)
+                return this.#vpool.escape((''+str).replace(/[\u0800-\uFFFF]/g, ''));
+            else return this.#vpool.escape(str);
+        }catch(err){
+            console.error('Err: ', err)
+        }
     }
     // // for execute query
     async query(script, callback_ok, callback_err, req){
@@ -56,9 +60,10 @@ class MySQLConnection {
 }
 
 // all of these obect reprentation from the class connection. feel free to create a new connection new Database,
-// which is for currently (20/07/22) our team just only use MySQL, and MongoDB for development. hopefully this base
+// which is for currently (21/07/22) our team just only use MySQL, and MongoDB for development. hopefully this base
 // could be use another connection
 module.exports = {
     mysql: new MySQLConnection(),
-    postgres: null
+    postgres: null,
+    mongodb: null
 };
