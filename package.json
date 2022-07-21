@@ -4,7 +4,8 @@
   "description": "Framework Express.js with base Node.Js OOP implements",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node ./bin/www"
   },
   "author": "Kelas Pintar, SE Backend",
   "license": "MIT",
