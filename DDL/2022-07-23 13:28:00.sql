@@ -1,0 +1,2 @@
+-- for all of this file saved DDL, DML, for changes on the database.
+-- this is for needed track of records (historical)
