@@ -6,7 +6,8 @@ const fileUpload = require('express-fileupload');
 const Config = require(`${__dirname}/./config/config.js`);
 // routes
 const corsRouter = require(`${__dirname}/./middleware/cors.js`);
-const rakaRouter = require(`${__dirname}/./routes/api_raka.js`)
+const rakaRouter = require(`${__dirname}/./routes/api_raka.js`);
+const taskRouter = require(`./routes/api_task.js`);
 
 class ExpressLoader {
     #app; // private variable
@@ -28,7 +29,8 @@ class ExpressLoader {
 
         // all routes desclare
         this.#app.use('/', corsRouter);
-        this.#app.use('/api/raka', rakaRouter)
+        this.#app.use('/api/raka', rakaRouter);
+        this.#app.use('/api/task', taskRouter);
 
         // view engine setup
         this.#app.set('views', path.join(__dirname, 'views'));
@@ -61,7 +63,7 @@ class ExpressLoader {
         // this.server = this.#app.listen(port, () => {
         //     console.info( `Express running, now listening on port ${port}` );
         // });
-
+        return this.#app
     }
 
     // get Server () {
