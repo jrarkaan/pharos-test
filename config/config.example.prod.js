@@ -11,17 +11,7 @@ class Config {
                 whitelist:[
                     'http://localhost',
                     'http://localhost:8080',
-                    'http://127.0.0.1:8080',
-                    'https://guru.kelaspintar.id',
-                    'https://staging-guru.kelaspintar.id',
-                    'http://staging-satrio.kelaspintar.co.id',
-                    'https://staging-satrio.kelaspintar.co.id',
-                    'https://indo-testassessment.extramarks.com',
-                    'https://assessment.extramarks.id',
-                    'https://kelaspintar.id',
-                    'https://www.kelaspintar.id',
-                    'http://kelaspintar.id',
-                    'http://www.kelaspintar.id'
+                    'http://127.0.0.1:8080'
                 ]
             }
         }
@@ -31,10 +21,10 @@ class Config {
     database(){
         return {
             username:"root",
-            password:"admin123",
+            password:"p4ssw0rd123",
             server:'127.0.0.1',
-            dbMysql: 'inventory',
-            portMysql: 5200
+            dbMysql: 'general_db_id',
+            portMysql: 3330
         }
     }
 
