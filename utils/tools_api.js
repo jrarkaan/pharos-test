@@ -39,6 +39,26 @@ class UtilsApi {
         }
     }
 
+   validation(){
+        return {
+            isEmailAddress: function(str) {
+                const pattern =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                return pattern.test(str);  // returns a boolean
+            },
+            isNotEmpty: function (str) {
+                const pattern =/\S+/;
+                return pattern.test(str);  // returns a boolean
+            },
+            isNumber: function(str) {
+                const pattern = /^\d+\.?\d*$/;
+                return pattern.test(str);  // returns a boolean
+            },
+            isSame: function(str1,str2){
+                return str1 === str2;
+            }
+        }
+   }
+
     ok200(data = null, message){
         console.info(this.#request.TAG,'RESP200',JSON.stringify(data));
         if(data === null){

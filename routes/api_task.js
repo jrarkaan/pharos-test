@@ -6,6 +6,80 @@ const moment = require('moment');
 const UtilsApi = require(`../utils/tools_api.js`);
 const { mysql } = require('../config/database.js');
 
+router.get('/get', async function(req, res, next){
+    const { page, limit } = req.query;
+    const utils = new UtilsApi(req, res, next);
+    const { isNumber } = utils.validation();
+    try{
+        if(typeof page === "undefined" || typeof limit === "undefined"){
+            return utils.nok200(3, null);
+        }else if(isNumber(page) === false || isNumber(limit) === false){
+            console.info('type data', typeof page)
+            return utils.nok200(2, "invalid type parameter!");
+        }
+        await mysql.query(`
+            with
+            allDataObjective as (
+                select 
+                    count(1) as count
+                    from general_db_id.objective o 
+            ),
+            rawData as (
+                select 
+                ROW_NUMBER() OVER () AS "Max_Page", 
+                COUNT(*) OVER() AS "Current_Page", 
+                JSON_PRETTY(
+                JSON_ARRAYAGG(
+                    JSON_OBJECT(
+                      'Task_Id', p.task_id,
+                      'Title', p.title,
+                      'Action_Time', UNIX_TIMESTAMP(p.action_time),
+                      'Is_Finished', p.is_finished,
+                      'Objective_List', p.objective2
+                    )
+                )
+              ) as List_Data
+                from (
+                  select 
+                    t2.task_id,
+                    t2.title,
+                    t2.action_time,
+                    t2.is_finished,
+                    JSON_ARRAYAGG(
+                      JSON_OBJECT(
+                        'is_finished', o.is_finished, 
+                        'objective_name', o.objective_name
+                      )
+                    ) as objective2 
+                  from general_db_id.objective as o inner join general_db_id.task as t2 on t2.task_id = o.task_id
+                    group by o.task_id
+                    order by o.task_id desc limit ${page}, ${limit}
+                ) as p
+            )
+            select 
+                d.List_Data as "List_Data",
+                json_object (
+                    "Current_Page", d.Current_Page,
+                    "Max_Page", d.Max_Page,
+                    "Total_All_Data", ad.count
+                ) as "Pagination_Data"
+                from rawData as d
+                    cross join allDataObjective as ad;
+        `, function(result){
+            result[0].List_Data = JSON.parse(result[0].List_Data);
+            // result[0].Pagination_Data = JSON.parse(result[0].Pagination_Data);
+            console.info('result: ', result)
+            return utils.ok200(result[0], "Success")
+        }, function(err){
+            console.error('Error: ', err)
+            return utils.nok200(2, `Something goes wrong: ${err}`);
+        })
+    }catch(err){
+        console.error('Error: ', err)
+        return utils.nok200(2, `Something goes wrong: ${err}`);
+    }
+})
+
 // @router POST /api/task/add
 // to create new task and objective
 router.post('/add', function (req, res, next){
@@ -59,7 +133,7 @@ router.post('/add', function (req, res, next){
                     })
 
                 }else{
-                    return utils.nok200(1, null)
+                    return utils.nok200(2, "Data was exists!")
                 }
 
             }, function(err){
@@ -194,6 +268,40 @@ router.patch('/update/:id', function(req, res, next){
     }
 });
 
-//
-router.delete('/');
+// @router DELETE by id task /api/task/delete/:id
+// to delete ttask
+router.delete('/delete/:id', function(req, res, next){
+    try{
+        const utils = new UtilsApi(req, res, next)
+        mysql.query(`
+          select count(1) as count
+            from general_db_id.task as t
+            inner join general_db_id.objective as o on t.task_id = o.task_id
+                where true and 
+                    t.task_id = ${mysql.escape(req.params.id)}
+        `, function(resultOfQuery){
+            if(resultOfQuery[0].count !== 0){
+                // delete from general_db_id.task as t where t.task_id = ${}
+                mysql.query(`
+                    delete from general_db_id.task as t where t.task_id = ${mysql.escape(req.params.id)};
+                    delete from general_db_id.objective as o where o.task_id = ${mysql.escape(req.params.id)};
+                `, function(d){
+                    return utils.ok200(null, "Successfully");
+                }, function(err){
+                    console.error('Error: ', err)
+                    return utils.nok200(2, `Something goes wrong: ${err}`);
+                })
+            }else{
+                return utils.nok200(3, null);
+            }
+        }, function(err){
+            console.error('Error: ', err)
+            return utils.nok200(2, `Something goes wrong: ${err}`);
+        });
+    }catch(err){
+        console.error('Error: ', err)
+        return utils.nok200(2, `Something goes wrong: ${err}`);
+    }
+});
+
 module.exports = router;
