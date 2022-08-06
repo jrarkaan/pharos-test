@@ -53,9 +53,9 @@ Penjelasan menggunakan Video
 https://drive.google.com/file/d/1JNTDFA0rQLG2nnPI2Rs2sntnedKX2nyI/view
 
 ## Step - 2 Instalisasi Project
-1. Penjelasan Services Backend Part 1 https://drive.google.com/file/d/1Czv_D1ph8dcRl-tnd9RCk9WO108ePqf6/view
-2. Penjelasan Services Backend Part 2 https://drive.google.com/file/d/1aPQNm94b9uLFl-cBbNi9tcnSrBUKi8Hq/view
-3. Penjelasan Services Backend Part 3 (end) https://drive.google.com/file/d/1xHE3ksG4JIW9CqgHiB73Rt5yVB2fMxsa/view
+- Penjelasan Services Backend Part 1 https://drive.google.com/file/d/1Czv_D1ph8dcRl-tnd9RCk9WO108ePqf6/view
+- Penjelasan Services Backend Part 2 https://drive.google.com/file/d/1aPQNm94b9uLFl-cBbNi9tcnSrBUKi8Hq/view
+- Penjelasan Services Backend Part 3 (end) https://drive.google.com/file/d/1xHE3ksG4JIW9CqgHiB73Rt5yVB2fMxsa/view
 
 1. silahkan git clone https://github.com/jrarkaan/pharos-test/
 2. selanjutnya buka terminal anda, dan masuk ke dalam folder pharos-test
