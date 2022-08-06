@@ -4,6 +4,12 @@ Untuk informasi lebih lanjut tentang saya dapat kunjugi:
 1. Linkedin: https://www.linkedin.com/in/rakajanitraa/
 2. Instagram: https://www.instagram.com/rakajanitraa/
 
+## Penjelasan Projek
+1. Framework, bahasa pemrograman, database yang digunakan -> https://drive.google.com/file/d/14UdCohR_hLa3qL8t93ybPnNrVKgqO1H8/view
+2. api/task/add -> https://drive.google.com/file/d/1rUqO6NRHLKxFOux5aVU1A6CxcfLQ5avL/view
+3. api/task/get/:id && api/task/update/:id -> https://drive.google.com/file/d/1OZAvP1wMdf-SH-TfP5bpQkls0mbwUG9F/view
+4. api/task/get && api/task/delete/:id ->
+
 ## Postman
 https://www.getpostman.com/collections/cedf7fc166bc9da873f3
 
