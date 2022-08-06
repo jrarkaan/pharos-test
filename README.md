@@ -8,7 +8,7 @@ Untuk informasi lebih lanjut tentang saya dapat kunjugi:
 1. Framework, bahasa pemrograman, database yang digunakan -> https://drive.google.com/file/d/14UdCohR_hLa3qL8t93ybPnNrVKgqO1H8/view
 2. api/task/add -> https://drive.google.com/file/d/1rUqO6NRHLKxFOux5aVU1A6CxcfLQ5avL/view
 3. api/task/get/:id && api/task/update/:id -> https://drive.google.com/file/d/1OZAvP1wMdf-SH-TfP5bpQkls0mbwUG9F/view
-4. api/task/get && api/task/delete/:id ->
+4. api/task/get && api/task/delete/:id -> https://drive.google.com/file/d/1OZAvP1wMdf-SH-TfP5bpQkls0mbwUG9F/view
 
 ## Postman
 https://www.getpostman.com/collections/cedf7fc166bc9da873f3
@@ -49,9 +49,14 @@ https://www.getpostman.com/collections/cedf7fc166bc9da873f3
 |   |   |-- docker-compose.yml
 ```
 ## Step - 1 Jalankan Container MySQL di Local
-1.
+Penjelasan menggunakan Video
+https://drive.google.com/file/d/1JNTDFA0rQLG2nnPI2Rs2sntnedKX2nyI/view
 
 ## Step - 2 Instalisasi Project
+1. Penjelasan Services Backend Part 1 https://drive.google.com/file/d/1Czv_D1ph8dcRl-tnd9RCk9WO108ePqf6/view
+2. Penjelasan Services Backend Part 2 https://drive.google.com/file/d/1aPQNm94b9uLFl-cBbNi9tcnSrBUKi8Hq/view
+3. Penjelasan Services Backend Part 3 (end) https://drive.google.com/file/d/1xHE3ksG4JIW9CqgHiB73Rt5yVB2fMxsa/view
+
 1. silahkan git clone https://github.com/jrarkaan/pharos-test/
 2. selanjutnya buka terminal anda, dan masuk ke dalam folder pharos-test
 3. jika sudah di dalam folder tersebut silahkan, 'npm install'
