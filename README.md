@@ -1,6 +1,6 @@
 ## Pharos Test Backend 1 (BE-1)
 Perkenalkan nama saya Raka Janitra Arkaan saya seorang Backend Engineer, dan tidak menutup kemungkinan bisa sebagai Full-Stack Engineer. 
-Untuk informasi lebih lanjut tentang saya dapat kunjugi:
+Untuk informasi lebih lanjut tentang saya dapat kunjungi:
 1. Linkedin: https://www.linkedin.com/in/rakajanitraa/
 2. Instagram: https://www.instagram.com/rakajanitraa/
 
@@ -45,7 +45,7 @@ https://www.getpostman.com/collections/cedf7fc166bc9da873f3
 |-- Dockerize - Repo: https://github.com/jrarkaan/Dockerize [1]
 |   |-- mysql
 |   |   |-- data
-|   |   |   |-- database.js
+|   |   |   
 |   |   |-- docker-compose.yml
 ```
 ## Step - 1 Jalankan Container MySQL di Local
